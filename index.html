@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+  <script src="main.js?v=12.6"></script>
+  <title>SongSim</title>
+  <link rel="stylesheet" type="text/css" href="main.css?v=5.9">
+  <meta charset="utf-8">
+</head>
+
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+  <div id="head">
+    <h1>SongSim:</h1>
+    <h2>Visualize Your Favorite Songs</h2>
+  </div>
+  <form ng-submit='getSuggestions()'>
+    <input type="text" placeholder="Search For A Song" id="search" ng-model='songTitle'/>
+    <input type ="submit" class="button" value="search"/>
+  </form>
+  <div id="suggestion-list">
+    <ul>
+	<li ng-repeat='track in suggestions'>
+		<div class="suggestion" ng-click="onClick(track)">
+		    {{track.track.artist_name}}: {{track.track.track_name}}
+		</div>
+	</li>
+    </ul>
+  </div>
+  <h1> {{track.artist}} <br> {{track.track_name}} </h1>
+  
+  <div id="canvas_container">
+    <canvas id="canvas" ng-hide="hide"></canvas>
+  </div>
+  <form id="style_id" ng-hide="hide">
+	Drawing Style: 
+	<input type="submit" class="button" value="Color" ng-click="makeColor()">
+	<input type="submit" class="button" value="Black" ng-click="makeBlack()">
+	<input type="submit" class="button" value="Randomize" ng-click="makeRandom()">
+   </form>
+</div>
+</body>
+</html>
